@@ -24,7 +24,7 @@ func newNewsKafka(ctx context.Context, db *_kafka.Client) NewsItem {
 
 func (p *NewsKafka) GetList() ([]models.NewsItem, error) {
 	log.Println("запрос на чтение в кафку")
-	m, err := p.db.GetMessage()
+	m, err := p.db.GetMessage(p.ctx)
 	log.Println("дождались")
 	if err != nil {
 		return nil, err
